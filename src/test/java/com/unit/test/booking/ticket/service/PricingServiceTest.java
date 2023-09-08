@@ -1,13 +1,9 @@
 package com.unit.test.booking.ticket.service;
 
-import com.rv.booking.ticket.entities.model.Discounts;
-import com.rv.booking.ticket.entities.model.PriceDetails;
-import org.springframework.beans.factory.annotation.Autowired;
-import repository.DiscountRepository;
-import repository.PriceRepository;
+import com.rv.booking.ticket.BookACinemaApplication;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = BookACinemaApplication.class)
 public class PricingServiceTest {
 
 

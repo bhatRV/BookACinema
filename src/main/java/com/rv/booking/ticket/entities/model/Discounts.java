@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.math.BigDecimal;
@@ -18,8 +20,11 @@ import java.math.BigDecimal;
 public class Discounts {
     @Id
     private Long id;
-    @Column(name = "ageCategory")
+    @Column(name = "AGE_CATEGORY")
+
+    @Enumerated(EnumType.STRING)
     private AgeCategory ageCategory;
+
     @Column(name = "discount")
     private BigDecimal discount;
 }

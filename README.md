@@ -48,6 +48,11 @@ http://localhost:8888/swagger-ui/index.html
 
 ## Endpoints
 
+Following are the APIs exposed: 
+	{GET /v1/ticket/offers}: getAllOffers()
+	{GET /v1/ticket/price}: getAllPriceDetails()
+	{POST /v1/ticket/book}: bookACinema(CustomerRequest)
+
 POST multiple customer data with the Phone numbers
 ```shell
 http://localhost:8888/v1/phone-directory/phone_numbers/customers
@@ -123,4 +128,7 @@ password: password
 
 
 #### Sample execution screen-shots:
- 
+
+
+#### health check
+http://localhost:8080/actuator/health

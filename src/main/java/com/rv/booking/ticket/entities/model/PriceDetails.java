@@ -15,12 +15,12 @@ import java.math.BigDecimal;
  */
 @JsonIgnoreProperties
 @Entity
-@Table(name = "PriceDetails")
+@Table(name = "Price_Details")
 public class PriceDetails {
     @Id
     private Long id;
 
-    @Column(name = "movieType")
+    @Column(name = "MOVIE_TYPE")
     String movieType;
     @Column(name = "price")
     BigDecimal price;

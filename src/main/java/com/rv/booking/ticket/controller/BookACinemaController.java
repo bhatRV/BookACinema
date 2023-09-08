@@ -9,6 +9,7 @@ import com.rv.booking.ticket.service.TicketBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
  * This is the Controller Which Provides REST APIs to book tickets for the cinema listed in out website.
  */
 @RestController
+@RequestMapping(path = "/v1/ticket/")
 public class BookACinemaController {
     @Autowired
     private TicketBookingService ticketBookingService;
@@ -25,19 +27,19 @@ public class BookACinemaController {
     @Autowired
     private PricingService pricingService;
 
-    @GetMapping("/ticket/offers")
+    @GetMapping("offers")
     public List<Discounts> getAllOffers() {
         return pricingService.getAllOffers();
     }
 
 
-    @GetMapping("/ticket/price")
+    @GetMapping("price")
     public List<PriceDetails> getAllPriceDetails() {
         return pricingService.getAllPriceDetails();
     }
 
 
-    @PostMapping("/tickt/book")
+    @PostMapping("book")
     public List<CustomerResponse> bookACinema(CustomerRequest customerRequest) {
         return ticketBookingService.bookACinema(customerRequest);
 

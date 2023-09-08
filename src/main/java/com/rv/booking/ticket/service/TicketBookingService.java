@@ -5,8 +5,8 @@ import com.rv.booking.ticket.entities.dto.CustomerResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.DiscountRepository;
-import repository.PriceRepository;
+import com.rv.booking.ticket.repository.DiscountRepository;
+import com.rv.booking.ticket.repository.PriceRepository;
 
 import java.util.List;
 
