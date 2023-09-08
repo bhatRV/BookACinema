@@ -75,9 +75,9 @@ curl --location 'http://localhost:8888/v1/phone-directory/customers' \
 
 GET all available discounts
 ```shell
-http://localhost:8080/v1/ticket/offers/
+'http://localhost:8080/v1/ticket/offers
 
-curl --location 'http://localhost:8080/v1/ticket/discounts/' \
+curl --location ''http://localhost:8080/v1/ticket/offers' \
 --header 'Accept: application/json'
 
 ```
