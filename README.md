@@ -123,6 +123,4 @@ password: password
 
 
 #### Sample execution screen-shots:
-![img.png](img.png)
-
-![img_1.png](img_1.png)
+ 
