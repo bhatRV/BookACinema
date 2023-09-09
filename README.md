@@ -77,7 +77,7 @@ GET all available discounts
 ```shell
 'http://localhost:8080/v1/ticket/offers
 
-curl --location ''http://localhost:8080/v1/ticket/offers' \
+curl --location 'http://localhost:8080/v1/ticket/offers' \
 --header 'Accept: application/json'
 
 ```
@@ -128,6 +128,16 @@ password: password
 
 
 #### Sample execution screen-shots:
+Response for get on all available discounts
+http://localhost:8080/v1/ticket/offers
+response: 
+![img.png](img.png)
+
+
+Response for get on all available prices
+http://localhost:8080/v1/ticket/price
+response:
+![img_1.png](img_1.png)
 
 
 #### health check

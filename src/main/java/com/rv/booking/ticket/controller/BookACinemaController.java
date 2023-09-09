@@ -4,17 +4,11 @@ import com.rv.booking.ticket.entities.dto.CustomerRequest;
 import com.rv.booking.ticket.entities.dto.CustomerResponse;
 import com.rv.booking.ticket.entities.dto.DiscountDTO;
 import com.rv.booking.ticket.entities.dto.PriceDTO;
-import com.rv.booking.ticket.entities.model.Discounts;
-import com.rv.booking.ticket.entities.model.PriceDetails;
 import com.rv.booking.ticket.mapper.MapStructMapper;
 import com.rv.booking.ticket.service.PricingService;
 import com.rv.booking.ticket.service.TicketBookingService;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,25 +32,24 @@ public class BookACinemaController {
     @Autowired
     private PricingService pricingService;
 
-    private MapStructMapper mapstructMapper;
-
+    private MapStructMapper INSTANCE = Mappers.getMapper(MapStructMapper.class);
 
     @Operation(summary = "Get all Offers")
     @GetMapping("offers")
     public ResponseEntity<List<DiscountDTO>> getAllOffers() {
 
-        var response = pricingService.getAllOffers().stream()
-                .map(x -> mapstructMapper.discountsToDTO(x)).collect(Collectors.toList());
-         return ResponseEntity.ok(response);
-
+        return ResponseEntity.ok(
+                INSTANCE.toDiscountsDTOs(pricingService.getAllOffers())
+        );
     }
 
     @Operation(summary = "Get all prices")
     @GetMapping("price")
     public ResponseEntity<List<PriceDTO>> getAllPriceDetails() {
-        var response = pricingService.getAllPriceDetails().stream()
-                .map(x -> mapstructMapper.priceDetailsToDTO(x)).collect(Collectors.toList());
-        return ResponseEntity.ok(response);
+
+        return ResponseEntity.ok(
+                INSTANCE.toPriceDTOs(pricingService.getAllPriceDetails())
+        );
 
     }
 
