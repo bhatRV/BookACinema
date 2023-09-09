@@ -1,11 +1,6 @@
 package com.rv.booking.ticket.entities.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,19 +21,18 @@ public class Discounts {
     @Id
     private Long id;
     @Column(name = "AGE_CATEGORY")
-
     @Enumerated(EnumType.STRING)
-    private AgeCategory ageCategory;
+    private TicketType ticketType;
 
     @Column(name = "discount")
     private BigDecimal discount;
 
-    public AgeCategory getAgeCategory() {
-        return ageCategory;
+    public TicketType getTicketType() {
+        return ticketType;
     }
 
-    public void setAgeCategory(AgeCategory ageCategory) {
-        this.ageCategory = ageCategory;
+    public void setTicketType(TicketType ticketType) {
+        this.ticketType = ticketType;
     }
 
     public BigDecimal getDiscount() {

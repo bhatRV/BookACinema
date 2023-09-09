@@ -1,30 +1,12 @@
 package com.rv.booking.ticket.service;
 
-import com.rv.booking.ticket.entities.model.Discounts;
-import com.rv.booking.ticket.entities.model.PriceDetails;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.rv.booking.ticket.repository.DiscountRepository;
-import com.rv.booking.ticket.repository.PriceRepository;
 
-import java.util.List;
+import com.rv.booking.ticket.entities.dto.Ticket;
+import com.rv.booking.ticket.entities.model.TicketType;
 
-@Service
-public class PricingService {
+public interface PricingService {
 
-    @Autowired
-    private DiscountRepository discountRepository;
+    public Ticket calculatePrice(TicketType type, int count);
 
-    @Autowired
-    private PriceRepository priceRepository;
-
-
-    public List<Discounts> getAllOffers() {
-        return discountRepository.findAll();
-    }
-
-
-    public List<PriceDetails> getAllPriceDetails() {
-        return priceRepository.findAll();
-    }
+    public boolean supportType(TicketType type);
 }

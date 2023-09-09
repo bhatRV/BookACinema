@@ -14,9 +14,9 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-          .select()
-          .apis(RequestHandlerSelectors.basePackage("com.rv.booking.ticket.controller"))
-          .paths(PathSelectors.any())
-          .build();
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.rv.booking.ticket.controller"))
+                .paths(PathSelectors.any())
+                .build();
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.unit.test.booking.ticket.rest.controller.BookACinemaControllerTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-09-09T01:16:18" hostname="Sunils-MacBook-Pro-2.local" time="0.005">
+<testsuite name="com.unit.test.booking.ticket.rest.controller.BookACinemaControllerTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-09-09T03:40:48" hostname="Sunils-MacBook-Pro-2.local" time="0.004">
   <properties/>
-  <testcase name="initializationError" classname="com.unit.test.booking.ticket.rest.controller.BookACinemaControllerTest" time="0.005">
+  <testcase name="initializationError" classname="com.unit.test.booking.ticket.rest.controller.BookACinemaControllerTest" time="0.004">
     <failure message="java.lang.Exception: No runnable methods" type="java.lang.Exception">java.lang.Exception: No runnable methods
 	at org.junit.runners.BlockJUnit4ClassRunner.validateInstanceMethods(BlockJUnit4ClassRunner.java:191)
 	at org.junit.runners.BlockJUnit4ClassRunner.collectInitializationErrors(BlockJUnit4ClassRunner.java:128)

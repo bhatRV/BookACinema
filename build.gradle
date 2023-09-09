@@ -27,7 +27,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter:2.2.5.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.2.5.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-webflux:2.2.5.RELEASE'
-
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.2.5.RELEASE'
 
     implementation 'org.springframework.boot:spring-boot-starter-actuator:2.2.5.RELEASE'
@@ -37,6 +36,8 @@ dependencies {
 
     implementation "org.mapstruct:mapstruct:1.4.2.Final"
     annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
+
+    implementation "io.vavr:vavr:0.10.4"
 
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
