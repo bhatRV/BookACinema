@@ -121,7 +121,7 @@ TODO: Can be improved to include component,blackbox and controller tests etc.
 
 ## Access the Database (H2)
 
-http://localhost:8888/h2-console/login.do
+http://localhost:8080/h2-console/login.do
 
 user: sa
 password: password
@@ -139,6 +139,7 @@ http://localhost:8080/v1/ticket/price
 response:
 ![img_1.png](img_1.png)
 
-
+TicketBooking API response
+![img_2.png](img_2.png)
 #### health check
 http://localhost:8080/actuator/health
