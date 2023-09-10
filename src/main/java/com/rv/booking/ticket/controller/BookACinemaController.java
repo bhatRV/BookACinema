@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -51,7 +52,7 @@ public class BookACinemaController {
 
     @Operation(summary = "Find out the pricing details for your booking")
     @PostMapping("book")
-    public CustomerResponse bookACinema(@RequestBody CustomerRequest customerRequest) {
+    public CustomerResponse bookACinema(@RequestBody @Valid CustomerRequest customerRequest) {
         return ticketBookingService.bookACinema(customerRequest);
 
     }

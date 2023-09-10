@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -24,8 +26,21 @@ public class IndividualPricingService implements PricingService {
     private PriceRepository priceRepository;
 
 
+
+
+
     @Override
-    public Ticket calculatePrice(TicketType type, int count) {
+    public BigDecimal calculatePrice(TicketType type, Map<TicketType, List<Ticket>> ticketMap, BigDecimal totalCost,  List<Ticket> pricedTicket) {
+        var countOfTicket = ticketMap.get(type).size();
+
+        Ticket ticket = calculatePrice(type, countOfTicket);
+        pricedTicket.add(ticket);
+        totalCost = totalCost.add(ticket.getCost());
+
+        return totalCost;
+    }
+
+    private Ticket calculatePrice(TicketType type, int count) {
         var discount = discountRepository.findByTicketType(type);
         var price = priceRepository.findByMovieType(Constants.DEFAULT);
 

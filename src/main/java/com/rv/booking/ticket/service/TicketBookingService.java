@@ -10,9 +10,9 @@ import com.rv.booking.ticket.entities.model.TicketType;
 import com.rv.booking.ticket.factory.PricingFactory;
 import com.rv.booking.ticket.repository.DiscountRepository;
 import com.rv.booking.ticket.repository.PriceRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -22,9 +22,9 @@ import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.stream.Collectors;
 
-import static com.rv.booking.ticket.entities.model.AgeCategory.ADULT;
-import static com.rv.booking.ticket.entities.model.AgeCategory.CHILD;
-import static com.rv.booking.ticket.entities.model.AgeCategory.TEEN;
+import static com.rv.booking.ticket.entities.model.AgeRange.ADULT;
+import static com.rv.booking.ticket.entities.model.AgeRange.CHILD;
+import static com.rv.booking.ticket.entities.model.AgeRange.TEEN;
 import static io.vavr.API.$;
 import static io.vavr.API.Case;
 import static io.vavr.API.Match;
@@ -41,6 +41,11 @@ public class TicketBookingService {
     @Autowired
     private PricingFactory pricingFactory;
 
+    @Value("${family.min.kids}")
+    private int countOfKidsForFamily;
+
+    BiPredicate<Map<TicketType, List<Ticket>>, TicketType> isFamily = (ticketMap1, category1) ->
+            category1.name().equals(TicketType.CHILD.name())  && ticketMap1.get(TicketType.CHILD).size() >= countOfKidsForFamily;
 
     public List<Discounts> getAllOffers() {
         return discountRepository.findAll();
@@ -50,8 +55,6 @@ public class TicketBookingService {
         return priceRepository.findAll();
     }
 
-    BiPredicate<Map<TicketType, List<Ticket>>, TicketType> isFamily = (ticketMap1, category1) ->
-            category1.name().equals(TicketType.CHILD.name())  && ticketMap1.get(TicketType.CHILD).size() > 2;
 
     public CustomerResponse bookACinema(CustomerRequest customerRequest) {
         List<Customer> customerList = customerRequest.getCustomers();
@@ -69,15 +72,17 @@ public class TicketBookingService {
 
         //Process for pricing
         ticketMap.forEach((category, value) -> {
-            if (isFamily.test(ticketMap, category)) {
-                totalCost[0] = calaculatePriceForChildTicket(ticketMap, totalCost[0], pricedTicket);
-
+                    if (isFamily.test(ticketMap, category)) {
+                        totalCost[0] = pricingFactory.findPricingService(TicketType.FAMILY)
+                                .calculatePrice(category, ticketMap, totalCost[0], pricedTicket);
                     } else {
-                totalCost[0] = calculateTicketPrice(category, ticketMap, totalCost[0], pricedTicket);
+                        totalCost[0] = pricingFactory.findPricingService(category)
+                                .calculatePrice(category, ticketMap, totalCost[0], pricedTicket);
 
                     }
                 }
         );
+
 
         return CustomerResponse.builder()
                 .tickets(pricedTicket)
@@ -85,29 +90,6 @@ public class TicketBookingService {
                 .transactionId(customerRequest.getTransactionId())
                 .build();
 
-
-    }
-
-    private BigDecimal calculateTicketPrice(TicketType key, Map<TicketType, List<Ticket>> ticketMap, BigDecimal totalCost,  List<Ticket> pricedTicket) {
-        var countOfTicket = ticketMap.get(key).size();
-
-        Ticket ticket = pricingFactory.findPricingService(key)
-                .calculatePrice(key, countOfTicket);
-        pricedTicket.add(ticket);
-        totalCost = totalCost.add(ticket.getCost());
-
-        return totalCost;
-    }
-
-    private BigDecimal calaculatePriceForChildTicket(Map<TicketType, List<Ticket>> ticketMap, BigDecimal totalCost,  List<Ticket> pricedTicket) {
-        var countOfTicket = ticketMap.get(TicketType.CHILD).size();
-
-        Ticket ticket = pricingFactory.findPricingService(TicketType.FAMILY)
-                .calculatePrice(TicketType.FAMILY, countOfTicket);
-        pricedTicket.add(ticket);
-
-        totalCost = totalCost.add(ticket.getCost());
-        return totalCost;
 
     }
 

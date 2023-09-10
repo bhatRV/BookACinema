@@ -19,6 +19,11 @@ spring:
     generate-ddl: true
     ddl-auto: update
 
+## minimum number of kids to be considered as family, default is 3
+family:
+  min:
+    kids: 3
+
 logging:
   level:
     root: info

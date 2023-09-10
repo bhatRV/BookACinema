@@ -42,9 +42,7 @@ NOTE: Pre loaded with some data through sql scripts
 Preloaded data is provided through the SQL scripts under resources/data.sql
  
 ### Swagger ###
-http://localhost:8888/swagger-ui/index.html
-
-![img_2.png](img_2.png)
+http://localhost:8080/swagger-ui/index.html
 
 ## Endpoints
 
@@ -54,23 +52,33 @@ Following are the APIs exposed:
 	{POST /v1/ticket/book}: bookACinema(CustomerRequest)
 
 POST multiple customer data with the Phone numbers
-```shell
-http://localhost:8888/v1/phone-directory/phone_numbers/customers
 
-curl --location 'http://localhost:8888/v1/phone-directory/customers' \
+```shell
+curl --location 'http://localhost:8080/v1/ticket/book' \
 --header 'Content-Type: application/json' \
---header 'Accept: */*' \
---data '[
-  {
-    "firstName": "culpa dolore",
-    "lastName": "mollit sed incididunt deserunt",
-    "phoneNumbers": [
-      {
-        "number": "0411000111"
-      }
-    ]
-  }
-]'
+--data '{
+"transactionId": 4,
+"customers": [
+  
+{
+"name":"Daniel abc",
+"age": 10
+},
+{
+"name":"Daniel Anderson",
+"age": 10
+},
+{
+"name": "Mary Jones",
+"age": 30
+},
+{
+"name":
+"Michelle Parker",
+"age": 70
+}
+]
+}'
 ```
 
 GET all available discounts

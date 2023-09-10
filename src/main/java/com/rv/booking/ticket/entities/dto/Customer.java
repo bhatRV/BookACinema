@@ -1,5 +1,6 @@
 package com.rv.booking.ticket.entities.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.Digits;
@@ -8,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Data
+@Builder
 public class Customer {
     @NotNull(message = "Please provide first Name")
     @NotEmpty(message = "Please provide first Name")

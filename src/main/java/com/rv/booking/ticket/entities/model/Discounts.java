@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "Discounts")
 public class Discounts {
+
     @Id
     private Long id;
     @Column(name = "AGE_CATEGORY")
@@ -42,5 +43,10 @@ public class Discounts {
     public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }
 
