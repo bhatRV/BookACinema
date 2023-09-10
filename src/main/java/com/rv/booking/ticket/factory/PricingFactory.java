@@ -3,7 +3,6 @@ package com.rv.booking.ticket.factory;
 import com.rv.booking.ticket.entities.model.TicketType;
 import com.rv.booking.ticket.service.PricingService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
