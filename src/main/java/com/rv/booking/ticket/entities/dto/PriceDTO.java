@@ -1,24 +1,25 @@
 package com.rv.booking.ticket.entities.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.rv.booking.ticket.entities.model.TicketType;
 
 import java.math.BigDecimal;
 
 
 public class PriceDTO {
 
-    @JsonProperty("movieType")
-    private String movieType;
+    @JsonProperty("ticketType")
+    private TicketType ticketType;
 
     @JsonProperty("price")
     private BigDecimal price;
 
-    public String getMovieType() {
-        return movieType;
+    public TicketType getTicketType() {
+        return ticketType;
     }
 
-    public void setMovieType(String movieType) {
-        this.movieType = movieType;
+    public void setTicketType(TicketType ticketType) {
+        this.ticketType = ticketType;
     }
 
     public BigDecimal getPrice() {

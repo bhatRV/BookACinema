@@ -1,6 +1,5 @@
 package com.rv.booking.ticket.service.impl;
 
-import com.rv.booking.ticket.config.Constants;
 import com.rv.booking.ticket.entities.dto.Ticket;
 import com.rv.booking.ticket.entities.model.TicketType;
 import com.rv.booking.ticket.repository.DiscountRepository;
@@ -42,7 +41,7 @@ public class FamilyPricingService implements PricingService {
 
     public Ticket calculatePrice(TicketType type, int count) {
         var discount = discountRepository.findByTicketType(TicketType.FAMILY);
-        var price = priceRepository.findByMovieType(Constants.DEFAULT);
+        var price = priceRepository.findByTicketType(TicketType.CHILD);
 
         var totalPrice = price.getPrice().multiply(BigDecimal.valueOf(count));
 

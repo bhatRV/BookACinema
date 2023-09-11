@@ -104,7 +104,7 @@ public class BookACinemaControllerTest {
                         .content(jsonInput))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.transactionId").value("12345"))
-                .andExpect(jsonPath("$.totalCost").value("210.0"));
+                .andExpect(jsonPath("$.totalCost").value("28.75"));
 
     }
 
@@ -122,7 +122,7 @@ public class BookACinemaControllerTest {
                         .content(new ObjectMapper().writeValueAsString(customerRequest)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.transactionId").value("1"))
-                .andExpect(jsonPath("$.totalCost").value("160.0"));
+                .andExpect(jsonPath("$.totalCost").value("30.0"));
 
     }
 
@@ -160,7 +160,7 @@ public class BookACinemaControllerTest {
                         .content(jsonInput))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.transactionId").value("12345"))
-                .andExpect(jsonPath("$.totalCost").value("310.0"));
+                .andExpect(jsonPath("$.totalCost").value("52.5"));
 
     }
 

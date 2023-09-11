@@ -19,7 +19,7 @@ spring:
     generate-ddl: true
     ddl-auto: update
 
-## minimum number of kids to be considered as family, default is 3
+## minimum number of kids to be considered as family, default is 3; i.e 3 or more will be considered a family
 family:
   min:
     kids: 3

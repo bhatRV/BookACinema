@@ -1,6 +1,5 @@
 package com.rv.booking.ticket.service.impl;
 
-import com.rv.booking.ticket.config.Constants;
 import com.rv.booking.ticket.entities.dto.Ticket;
 import com.rv.booking.ticket.entities.model.TicketType;
 import com.rv.booking.ticket.repository.DiscountRepository;
@@ -27,10 +26,6 @@ public class IndividualPricingService implements PricingService {
     @Autowired
     private PriceRepository priceRepository;
 
-
-
-
-
     @Override
     public BigDecimal calculatePrice(TicketType type, Map<TicketType, List<Ticket>> ticketMap, BigDecimal totalCost,  List<Ticket> pricedTicket) {
         var countOfTicket = ticketMap.get(type).size();
@@ -45,7 +40,7 @@ public class IndividualPricingService implements PricingService {
 
     private Ticket calculatePrice(TicketType type, int count) {
         var discount = discountRepository.findByTicketType(type);
-        var price = priceRepository.findByMovieType(Constants.DEFAULT);
+        var price = priceRepository.findByTicketType(type);
 
         var totalPrice = price.getPrice().multiply(BigDecimal.valueOf(count));
 

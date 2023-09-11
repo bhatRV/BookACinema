@@ -10,8 +10,6 @@ import com.rv.booking.ticket.entities.model.TicketType;
 import com.rv.booking.ticket.repository.DiscountRepository;
 import com.rv.booking.ticket.repository.PriceRepository;
 import com.rv.booking.ticket.service.impl.IndividualPricingService;
-import org.junit.Ignore;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -46,7 +44,7 @@ public class PricingServiceTest {
 
         when(discountRepository.findByTicketType(TicketType.ADULT)).thenReturn(adultDiscount());
 
-        when(priceRepository.findByMovieType(any())).thenReturn(originalPrice());
+        when(priceRepository.findByTicketType(any())).thenReturn(originalPrice());
 
 
         //when( discountRepository.findByTicketType(any())).thenCallRealMethod();

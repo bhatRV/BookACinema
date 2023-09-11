@@ -82,16 +82,13 @@ public class TicketBookingService {
          log.info("Processing the request further for pricing , transactionId:{}",customerRequest.getTransactionId());
          ticketMap.forEach((category, value) -> {
                     if (isFamily.test(ticketMap, category)) {
-                        totalCost[0] = pricingFactory.findPricingService(TicketType.FAMILY)
-                                .calculatePrice(category, ticketMap, totalCost[0], pricedTicket);
+                        totalCost[0] = getPricingAsIndividual(TicketType.FAMILY, ticketMap, totalCost, pricedTicket);
                     } else {
-                        totalCost[0] = pricingFactory.findPricingService(category)
-                                .calculatePrice(category, ticketMap, totalCost[0], pricedTicket);
+                        totalCost[0] = getPricingAsIndividual(category, ticketMap, totalCost, pricedTicket);
 
                     }
                 }
         );
-
 
         return CustomerResponse.builder()
                 .tickets(pricedTicket)
@@ -100,6 +97,13 @@ public class TicketBookingService {
                 .build();
 
 
+    }
+
+    private BigDecimal getPricingAsIndividual(TicketType category, Map<TicketType, List<Ticket>> ticketMap, BigDecimal[] totalCost, List<Ticket> pricedTicket) {
+        log.info("getPricingAsIndividual category:{} ",category.name());
+
+        return pricingFactory.findPricingService(category)
+                .calculatePrice(category, ticketMap, totalCost[0], pricedTicket);
     }
 
 

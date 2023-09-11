@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.math.BigDecimal;
@@ -19,18 +21,18 @@ import java.math.BigDecimal;
 public class PriceDetails {
     @Id
     private Long id;
-
-    @Column(name = "MOVIE_TYPE")
-    String movieType;
+    @Column(name = "AGE_CATEGORY")
+    @Enumerated(EnumType.STRING)
+    TicketType ticketType;
     @Column(name = "price")
     BigDecimal price;
 
-    public String getMovieType() {
-        return movieType;
+    public TicketType getTicketType() {
+        return ticketType;
     }
 
-    public void setMovieType(String movieType) {
-        this.movieType = movieType;
+    public void setTicketType(TicketType ticketType) {
+        this.ticketType = ticketType;
     }
 
     public BigDecimal getPrice() {

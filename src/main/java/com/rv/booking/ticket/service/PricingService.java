@@ -10,7 +10,7 @@ import java.util.Map;
 
 public interface PricingService {
 
-    public BigDecimal calculatePrice(TicketType key, Map<TicketType, List<Ticket>> ticketMap, BigDecimal totalCost, List<Ticket> pricedTicket);
+     BigDecimal calculatePrice(TicketType key, Map<TicketType, List<Ticket>> ticketMap, BigDecimal totalCost, List<Ticket> pricedTicket);
 
-    public boolean supportType(TicketType type);
+     boolean supportType(TicketType type);
 }
