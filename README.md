@@ -152,13 +152,13 @@ password: password
 Response for get on all available discounts
 http://localhost:8080/v1/ticket/offers
 response: 
-![img.png](img.png)
-
+ 
+![img_10.png](img_10.png)
 
 Response for get on all available prices
 http://localhost:8080/v1/ticket/price
 response:
-![img_1.png](img_1.png)
+ ![img_9.png](img_9.png)
 
 TicketBooking API response
 ![img_2.png](img_2.png)
