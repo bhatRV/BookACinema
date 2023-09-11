@@ -1,4 +1,4 @@
-package com.unit.test.booking.ticket.integration.test;
+package com.integration.test.booking.ticket.test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rv.booking.ticket.BookACinemaApplication;
