@@ -10,6 +10,7 @@ This project implements and Simple Booking tickets app for any booking websites.
       -  get all Ticket prices
       
       -  Book an estimated price for ticket booking after applying the discounts
+            ( Family discounts, Child Discount )
 
 This also provides few basic validations around the inputs , which can be extended further based on the needs.
 
@@ -110,6 +111,7 @@ Below are some details on technical aspects of the project and few learnings.
 4. 2 seperate controllers to keep it extendable to provide more operations
 5. Discount information is stored in DB to provide extendable options for future.
 6. Keeping in mind the possible extentions and addition of feature Factory Pattern is used to make it easily extendable.
+7. Configurable Family size through application yaml properties.
 
 ## Scope for Enhancements
 1. Extensive test cases to cover more scenarios can be added. Currently around 26 Test cases are added to cover some basic scenaios and end to end testing.
@@ -120,6 +122,7 @@ Below are some details on technical aspects of the project and few learnings.
 6. Replace H2 Db, with proper db instance
 7. Containerize for better deployment
 8. Authontication and Security Checks can be added on top of the APIs to make it more secure
+   
 
 
 ### Testing
