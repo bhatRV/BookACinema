@@ -1,7 +1,6 @@
 package com.rv.booking.ticket.mapper;
 
 import com.rv.booking.ticket.entities.dto.DiscountDTO;
-import com.rv.booking.ticket.entities.dto.DiscountDTO.DiscountDTOBuilder;
 import com.rv.booking.ticket.entities.dto.PriceDTO;
 import com.rv.booking.ticket.entities.model.Discounts;
 import com.rv.booking.ticket.entities.model.PriceDetails;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-10T17:28:11+1000",
+    date = "2023-09-11T10:16:38+1000",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.2.jar, environment: Java 17.0.8 (JetBrains s.r.o.)"
 )
 @Component
@@ -24,12 +23,12 @@ public class MapStructMapperImpl implements MapStructMapper {
             return null;
         }
 
-        DiscountDTOBuilder discountDTO = DiscountDTO.builder();
+        DiscountDTO discountDTO = new DiscountDTO();
 
-        discountDTO.ticketType( discountsInfo.getTicketType() );
-        discountDTO.discount( discountsInfo.getDiscount() );
+        discountDTO.setTicketType( discountsInfo.getTicketType() );
+        discountDTO.setDiscount( discountsInfo.getDiscount() );
 
-        return discountDTO.build();
+        return discountDTO;
     }
 
     @Override

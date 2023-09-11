@@ -57,6 +57,10 @@ public class TicketBookingService {
 
 
     public CustomerResponse bookACinema(CustomerRequest customerRequest) {
+        if(customerRequest == null)
+        {
+            throw new IllegalArgumentException("Invalid Input with Empty/Null Request Object");
+        }
         List<Customer> customerList = customerRequest.getCustomers();
 
         //group the customers by Age

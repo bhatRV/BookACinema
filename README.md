@@ -124,6 +124,13 @@ Below are some details on technical aspects of the project and few learnings.
 ### Testing
 Unit tests
 TODO: Can be improved to include component,blackbox and controller tests etc.
+TODO: Cover more validations and validation testing
+
+Test Execution report 
+
+![img_3.png](img_3.png)
+
+
 ![img_3.png](img_3.png)
 
 
