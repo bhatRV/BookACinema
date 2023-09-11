@@ -131,7 +131,9 @@ Test Execution report
 ![img_3.png](img_3.png)
 
 
-![img_3.png](img_3.png)
+Integration Testing with some basic functional cases
+
+![img_4.png](img_4.png)
 
 
 ## Access the Database (H2)
