@@ -109,9 +109,10 @@ Below are some details on technical aspects of the project and few learnings.
 3. Comes with few pre-loaded entries, which can be extended by providing an add API
 4. 2 seperate controllers to keep it extendable to provide more operations
 5. Discount information is stored in DB to provide extendable options for future.
+6. Keeping in mind the possible extentions and addition of feature Factory Pattern is used to make it easily extendable.
 
 ## Scope for Enhancements
-1. Extensive test cases to cover more scenarios can be added
+1. Extensive test cases to cover more scenarios can be added. Currently around 26 Test cases are added to cover some basic scenaios and end to end testing.
 2. Validations can be enhanced to include more on the inputs. Basic validations are provided for now.
 3. User Interface can be provided.
 4. Various levels of testing can be included

@@ -29,6 +29,7 @@ import static com.rv.booking.ticket.entities.model.AgeRange.TEEN;
 import static io.vavr.API.$;
 import static io.vavr.API.Case;
 import static io.vavr.API.Match;
+import static io.vavr.Predicates.isNull;
 
 @Service
 @RequiredArgsConstructor
@@ -108,12 +109,18 @@ public class TicketBookingService {
 
 
     private TicketType classify(Customer customer) {
+
         return Match(customer.getAge()).of(
+                Case($(isNull()), () -> invalidAgeException(customer)),
                 Case($(value ->CHILD.getRange().isValidIntValue(value)), () -> TicketType.CHILD),
                 Case($(value ->TEEN.getRange().isValidIntValue(value)), () -> TicketType.TEEN),
                 Case($(value ->ADULT.getRange().isValidIntValue(value)), () -> TicketType.ADULT),
                 Case($(), TicketType.SENIOR));
 
+    }
+
+    private TicketType invalidAgeException(Customer customer) {
+        throw new IllegalArgumentException("Error in Processing. Missing Age information for "+  customer.getName());
     }
 
 }

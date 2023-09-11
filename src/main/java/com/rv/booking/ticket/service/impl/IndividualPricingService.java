@@ -57,7 +57,6 @@ public class IndividualPricingService implements PricingService {
                 || type == TicketType.CHILD
                 || type == TicketType.SENIOR
                 || type == TicketType.TEEN;
-
     }
 
 

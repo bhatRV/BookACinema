@@ -18,7 +18,7 @@ public class DiscountDTO {
     @JsonProperty("ticketType")
     private TicketType ticketType;
 
-    @JsonProperty("discount(in %)")
+    @JsonProperty("discount(%)")
     private BigDecimal discount;
 
     public TicketType getTicketType() {
