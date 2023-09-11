@@ -43,7 +43,7 @@ Preloaded data is provided through the SQL scripts under resources/data.sql
  
 ### Swagger ###
 http://localhost:8080/swagger-ui/index.html
-
+![img_5.png](img_5.png)
 ## Endpoints
 
 Following are the APIs exposed: 
