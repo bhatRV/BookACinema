@@ -11,6 +11,7 @@ import com.rv.booking.ticket.factory.PricingFactory;
 import com.rv.booking.ticket.repository.DiscountRepository;
 import com.rv.booking.ticket.repository.PriceRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,7 @@ import static io.vavr.API.Match;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class TicketBookingService {
     @Autowired
     private DiscountRepository discountRepository;
@@ -59,6 +61,8 @@ public class TicketBookingService {
     public CustomerResponse bookACinema(CustomerRequest customerRequest) {
         if(customerRequest == null)
         {
+            log.error("An Error Occured while processing teh request, transactionId:{}, details: Validation Failed, CustomerRequest is empty ",customerRequest.getTransactionId());
+
             throw new IllegalArgumentException("Invalid Input with Empty/Null Request Object");
         }
         List<Customer> customerList = customerRequest.getCustomers();
@@ -75,7 +79,8 @@ public class TicketBookingService {
         List<Ticket> pricedTicket = new ArrayList<>();
 
         //Process for pricing
-        ticketMap.forEach((category, value) -> {
+        log.info("Processing the request further for pricing , transactionId:{}",customerRequest.getTransactionId());
+         ticketMap.forEach((category, value) -> {
                     if (isFamily.test(ticketMap, category)) {
                         totalCost[0] = pricingFactory.findPricingService(TicketType.FAMILY)
                                 .calculatePrice(category, ticketMap, totalCost[0], pricedTicket);

@@ -10,6 +10,7 @@ import java.util.List;
 @Builder
 public class CustomerResponse {
     Integer transactionId;
+
     List<Ticket> tickets;
 
     BigDecimal totalCost;

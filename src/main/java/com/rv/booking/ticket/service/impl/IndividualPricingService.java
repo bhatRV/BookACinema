@@ -7,6 +7,7 @@ import com.rv.booking.ticket.repository.DiscountRepository;
 import com.rv.booking.ticket.repository.PriceRepository;
 import com.rv.booking.ticket.service.PricingService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class IndividualPricingService implements PricingService {
 
     @Autowired
@@ -36,6 +38,7 @@ public class IndividualPricingService implements PricingService {
         Ticket ticket = calculatePrice(type, countOfTicket);
         pricedTicket.add(ticket);
         totalCost = totalCost.add(ticket.getCost());
+        log.info("Individual Pricing completed for type:{} totalCost:{}",type,totalCost);
 
         return totalCost;
     }
