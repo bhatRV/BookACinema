@@ -8,9 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DiscountRepository extends JpaRepository<Discounts, Long> {
 
-/*    @Query("SELECT t FROM Discounts t WHERE LOWER(t.ticketType) = LOWER(:ticketType)")
-    public Discounts findByTicketType(@Param("ticketType") TicketType ticketType);*/
-
-     public Discounts findByTicketType(TicketType ticketType);
+      Discounts findByTicketType(TicketType ticketType);
 
 }

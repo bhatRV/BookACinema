@@ -59,27 +59,27 @@ public class TicketBookingService {
 
 
     public CustomerResponse bookACinema(CustomerRequest customerRequest) {
-        if(customerRequest == null)
-        {
-            log.error("An Error Occured while processing teh request, transactionId:{}, details: Validation Failed, CustomerRequest is empty ",customerRequest.getTransactionId());
 
-            throw new IllegalArgumentException("Invalid Input with Empty/Null Request Object");
+        if(customerRequest == null || customerRequest.getTransactionId() == null)
+        {
+            log.error("An Error Occurred while processing teh request. Validation Failed, CustomerRequest is empty or Transaction Id is missing ");
+
+            throw new IllegalArgumentException("Invalid Input with Empty/Null Request Object or field");
         }
+
         List<Customer> customerList = customerRequest.getCustomers();
 
-        //group the customers by Age
-        Map<TicketType, List<Ticket>> ticketMap = customerList.stream()
+         Map<TicketType, List<Ticket>> ticketMap = customerList.stream()
                 .map(x -> Ticket.builder().ticketType(classify(x)).build())
                 .collect(Collectors.groupingBy(Ticket::getTicketType));
 
-        System.out.println(ticketMap);
+        log.info("Categorising the request completed.Progressing further , transactionId:{} , ticketSize : {}",customerRequest.getTransactionId(),ticketMap.size());
 
         final BigDecimal[] totalCost = {new BigDecimal(0)};
 
         List<Ticket> pricedTicket = new ArrayList<>();
 
-        //Process for pricing
-        log.info("Processing the request further for pricing , transactionId:{}",customerRequest.getTransactionId());
+         log.info("Processing the request further for pricing , transactionId:{}",customerRequest.getTransactionId());
          ticketMap.forEach((category, value) -> {
                     if (isFamily.test(ticketMap, category)) {
                         totalCost[0] = pricingFactory.findPricingService(TicketType.FAMILY)
