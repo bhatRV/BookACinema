@@ -161,3 +161,16 @@ TicketBooking API response
 ![img_2.png](img_2.png)
 #### health check
 http://localhost:8080/actuator/health
+
+
+## Scneario Testing as per requirement 
+Scenario 1:
+
+![img_6.png](img_6.png)
+
+
+Scenario 2:
+![img_7.png](img_7.png)
+
+Scenario 3:
+![img_8.png](img_8.png)
