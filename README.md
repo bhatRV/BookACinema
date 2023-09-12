@@ -9,16 +9,18 @@ This project implements and Simple Booking tickets app for any booking websites.
       
       -  get all Ticket prices
       
-      -  Book an estimated price for ticket booking after applying the discounts
+      -  Book A ticket OR get an estimated price for ticket booking after applying the discounts
             ( Family discounts, Child Discount )
 
-This also provides few basic validations around the inputs , which can be extended further based on the needs.
+Note: This  provides few basic validations around the inputs , which can be extended further based on the needs. 
+Note: Basic Testing is included, more negative cases can be covered.
+Note: Design keeping in mind the ease of extendeding and adding more feeatures
 
 ## Pre-requsites
 The project utilises the following technologies:
 - Java 11
-- Spring Boot
-- Gradle
+- Spring Boot 2.x
+- Gradle 7.2
 - H2 in memory as the data store (with few pre-loaded entries)
 - IntelliJ if you would like to extend the features
 
@@ -118,7 +120,7 @@ Below are some details on technical aspects of the project and few learnings.
 2. Validations can be enhanced to include more on the inputs. Basic validations are provided for now.
 3. User Interface can be provided.
 4. Various levels of testing can be included
-5. More APIs to add and update directory can be included
+5. More APIs to add and update can be included
 6. Replace H2 Db, with proper db instance
 7. Containerize for better deployment
 8. Authontication and Security Checks can be added on top of the APIs to make it more secure
