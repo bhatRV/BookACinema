@@ -11,6 +11,20 @@ This project implements and Simple Booking tickets app for any booking websites.
       
       -  Book A ticket OR get an estimated price for ticket booking after applying the discounts
             ( Family discounts, Child Discount )
+## Requirement:
+
+There are four types of movie tickets
+Adult: For customers 18 years and older but less than 65 years old. Costs $25.
+Senior: For customers 65 years and older. 30% cheaper than Adult tickets
+Teen: For customers 11 years and older but less than 18 years old. Costs $12
+Children: For customers less than 11 years of age. Costs $5.
+If there are 3 or more Children's tickets in a transaction, there's a 25% discount applied to the cost of Children's tickets
+
+Implement a java application which will expose an API call to take transaction as input and return below information:
+The ID of the transaction; Each individual type of movie ticket present in that transaction,and it's quantity and total cost of tickets.
+
+
+ 
 
 Note: This  provides few basic validations around the inputs , which can be extended further based on the needs. 
 Note: Basic Testing is included, more negative cases can be covered.
